@@ -25,8 +25,8 @@ public class UserServiceIntegrationTests : IClassFixture<DbContextTestFixture>
         {
             Name = "Anriza Aziiz",
             Email = "anriza@example.com",
-            DateOfBirth = new DateTime(1995, 12, 5),
-            Address = "Jakarta",
+            DateOfBirth = new DateTime(1996, 9, 21),
+            Address = "Salatiga",
             PhoneNumber = "08123456789"
         };
 
