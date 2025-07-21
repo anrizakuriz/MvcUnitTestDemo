@@ -46,7 +46,13 @@ namespace MvcUnitTestDemo.Tests.Controller
         {
             // Arrange
             var users = A.Fake<List<User>>();
+
+            // pakai A.CallTo dibawah ini untuk mengembalikan data palsu
             A.CallTo(() => _userService.GetAllUsers()).Returns(Task.FromResult(users));
+
+            // pakai A.CallTo dibawah ini untuk mengembalikan exception
+            //A.CallTo(() => _userService.GetAllUsers()).Throws<NotImplementedException>();
+
 
             // Act
             var result = await _homeController.Index();
