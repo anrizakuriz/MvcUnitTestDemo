@@ -1,4 +1,5 @@
-﻿using MvcUnitTestDemo.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MvcUnitTestDemo.Data;
 using MvcUnitTestDemo.Models;
 
 namespace MvcUnitTestDemo.Services
@@ -10,6 +11,7 @@ namespace MvcUnitTestDemo.Services
         {
             _context = context;
         }
+
         public async Task<List<User>> GetAllUsers()
         {
             throw new NotImplementedException();
@@ -17,7 +19,9 @@ namespace MvcUnitTestDemo.Services
 
         public async Task<User> GetUserById(int id)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            return user;
         }
 
         public async Task AddUser(User user)

@@ -19,6 +19,9 @@ namespace MvcUnitTestDemo.Controllers
         public async Task<IActionResult> Index()
         {
             var allUsers = await _userService.GetAllUsers();
+            //var allUser2s = await _userService.GetAllUsers();
+            //var allUser3s = await _userService.GetAllUsers();
+
             return View(allUsers);
         }
 

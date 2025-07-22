@@ -39,6 +39,7 @@ public class UserServiceIntegrationTests : IClassFixture<DbContextTestFixture>
 
         var userInDb = await _context.Users.FindAsync(newUser.Id);
         userInDb.Should().NotBeNull();
+
         userInDb!.Name.Should().Be(newUser.Name);
         userInDb.Email.Should().Be(newUser.Email);
         userInDb.DateOfBirth.Should().Be(newUser.DateOfBirth);

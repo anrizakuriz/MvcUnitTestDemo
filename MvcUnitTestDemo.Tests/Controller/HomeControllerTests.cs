@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -30,14 +25,16 @@ namespace MvcUnitTestDemo.Tests.Controller
         [Fact]
         public async Task Index_ReturnsActionResult()
         {
-            // Arrange
-            var users = A.Fake<List<User>>();
+            // Arrange - nyiapin
+            var users = A.Fake<List<User>>(); // list fake users
+
+            // kalau home controller nanti ada yang manggil user service dan GetAllUsers, maka tolong kembalikan data palsu
             A.CallTo(() => _userService.GetAllUsers()).Returns(users);
 
-            // Act
+            // Act - manggil
             var result = await _homeController.Index();
 
-            // Assert
+            // Assert - ekspetasi
             result.Should().BeOfType<ViewResult>();
         }
 
@@ -79,7 +76,5 @@ namespace MvcUnitTestDemo.Tests.Controller
             A.CallTo(() => _userService.GetAllUsers())
                 .MustHaveHappenedOnceExactly();
         }
-
-
     }
 }
